@@ -1,10 +1,9 @@
-name: Schedule
+name: Contexts
 
-on:
-  schedule:
-    - cron: '*/15 * * * *'
+on: push
+
 jobs:
-  run:
+  print:
     runs-on: ubuntu-latest
     steps:
-      - run: date
+      - run: echo "${{ github.actor }}"
