@@ -1,15 +1,12 @@
-name: Literals
+name: Generate functions
 
 on: push
 
 jobs:
-  print:
+  generate:
     runs-on: ubuntu-latest
     steps:
-      - run: printenv | grep 'LITERAL'
+      - run: printenv | grep '_FUNC'
     env:
-      LITERAL_NULL: ${{ null }}
-      LITERAL_BOOLEAN: ${{ true }}
-      LITERAL_NUMBER: ${{ 1234 }}
-      LITERAL_STRING: ${{ 'Hello' }}
-      LITERAL_OMIT_STRING: World
+      FORMAT_FUNC: ${{ format('{0}, {1}.', 'Hi', 'world') }}
+      JOIN_FUNC: ${{ join(github.event.*.html_url, ', ') }}
