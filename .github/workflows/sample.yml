@@ -1,11 +1,10 @@
-name: JSON functions
+name: Conditions
 
 on: push
 
 jobs:
-  dump:
+  slip-or-run:
     runs-on: ubuntu-latest
     steps:
-      - run: echo "${CONTEXT}"
-    env:
-      CONTEXT: ${{ toJSON(github) }}
+      - run: echo "Hello"
+        if: ${{ contains(github.run_id, '1') }}
